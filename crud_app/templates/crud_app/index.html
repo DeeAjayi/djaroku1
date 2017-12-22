@@ -1,1 +1,30 @@
-<h2> Hello World</h2>
+{% extends 'crud_app/base.html' %}
+{% block h2 %} {% endblock %}
+{% block div %} class="container-fluid"{% endblock %}
+{% block body %}
+<h2>A little about the project</h2>
+<p>The aim is to create an API backend running on django framework that have
+    endpoints to handle a basic school information system which can:
+</p>
+<div>
+    <ul>
+      <li><p>Create Students’ resource</p></li>
+      <li><p>Read Students’ resource</p></li>
+      <li><p>update and delete students.</p></li>
+    </ul>
+</div>
+<br>
+<p>By consuming the endpoints from the backend, I built a frontend page that handles</p>
+<div>
+  <ul>
+    <li><p>Creating Students’ resource</p></li>
+    <li><p>Listing Students’ resource</p></li>
+    <li><p>Showing Students’ resource</p></li>
+    <li><p>editing and deleting students on backend.</p></li>
+  </ul>
+</div>
+<br>
+<div>
+    <a class="btn btn-primary" href="{% url 'crud_app:student-add' %} ">Add Student</a></div>
+</div>
+{% endblock %}

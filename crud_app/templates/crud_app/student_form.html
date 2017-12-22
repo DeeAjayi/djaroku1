@@ -1,0 +1,49 @@
+{% extends 'crud_app/base.html' %}
+{% block h2 %} Add Students {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div>
+            <a class="btn btn-primary" type="button" name="back" href="{% url 'crud_app:all_list' %}" >
+                <i class="glyphicon glyphicon-arrow-left"></i>
+                <span>Go Back</span>
+            </a>
+        </div><br>
+        <div>
+        * All fields are required
+        </div><br>
+
+             <div class="panel panel-default">
+                <div class="panel-body">
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal pull-left" method="post">
+                        {% csrf_token %}
+                        {% include 'crud_app/form_template.html' %}
+                        <div class="form-group pull-left">
+                            <div class="col-sm-offset-1 col-sm-3">
+                                <br>
+                                <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid"> Add Student</button><br><br>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+             </div>
+
+
+
+    </div>
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,65 @@
+{% extends 'crud_app/base.html' %}
+{% block h2 %} All Students Details {% endblock %}
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+{% block body %}
+    <div class="container-fluid">
+      <div class="row">
+
+          <div>
+            <h1 class="sub-header">Student list</h1>
+            <div>
+              <a class="btn btn-primary" href="{% url 'crud_app:student-add' %} ">Add Student</a></div>
+            </div>
+          <br>
+          <div>
+
+            <div class="todo-list">
+               {% if not object_list %}
+                  <div class="alert alert-warning text-center">
+                    <h3>No Students</h3>
+                  </div>
+               {% endif %}
+            </div>
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped" >
+                <thead>
+                <tr class="container">
+                  <th width="1%">S/N</th>
+                  <th width="20%">Surname</th>
+                  <th width="20%">Firstname</th>
+                  <th width="20%">Email</th>
+                  <th width="5%">Details</th>
+                  <th width="30%">Manage</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for student in object_list %}
+                <tr>
+                  <td></td>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ student.Surname }}</td>
+                  <td>{{ student.Firstname }}</td>
+                  <td>{{ student.email}}</td>
+                  <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'crud_app:detail' student.pk %} ">More</a>
+                  </td>
+                  <td>
+                     <a class="btn btn-primary btn-sm" href="{% url 'crud_app:student-update' student.pk %} ">Edit</a>
+                     <a class="btn btn-danger btn-sm" href="{% url 'crud_app:student-delete' student.pk %} ">Delete </a>
+                  </td>
+                {% endfor %}
+                </tr>
+
+                </tbody>
+              </table>
+              <br><br><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}
