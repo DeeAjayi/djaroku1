@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-#from django.views.generic.base import RedirectView
+# from django.views.generic.base import RedirectView
 from django.views import generic
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render
@@ -23,7 +23,7 @@ class ListView(generic.ListView):
     context_object_name = 'all_students'
 
     def get_queryset(self):
-        return Student.objects.all()
+        return Student.objects.all().order_by('id')
 
 
 class DetailView(generic.DetailView):

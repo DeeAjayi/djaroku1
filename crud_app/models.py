@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Student(models.Model):
@@ -12,3 +13,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.Surname + ' ' + self.Firstname
+
+    def get_absolute_url(self):
+        return reverse("all_list", kwargs={"id": self.id})
